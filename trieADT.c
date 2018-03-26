@@ -85,7 +85,7 @@ void insert(trie_t *pTrie, char key[])
  
         pCrawl = pCrawl->children[index];
     }
-    printf("count%d\n", pTrie->count);
+    debug_print("dictionary count: %d\n", pTrie->count);
     // mark last node as leaf
     pCrawl->code = pTrie->count;
 }
@@ -112,6 +112,6 @@ int search(trie_t *pTrie, char key[])
         pCrawl = pCrawl->children[index];
     }
  
-    return (0 != pCrawl && pCrawl->code);
+    return (0 != pCrawl && pCrawl->code) ? pCrawl->code : 0;
 }
  
