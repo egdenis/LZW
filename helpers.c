@@ -1,6 +1,9 @@
 #include <stdlib.h>
 #include <string.h>
 
+
+
+
 char* itoa(int value, char* result, int base) {
 		// check that the base if valid
 		if (base < 2 || base > 36) { *result = '\0'; return result; }
@@ -30,6 +33,25 @@ void append(char* s, char c) {
         s[len] = c;
         s[len+1] = '\0';
 }
+
+
+void initilize_dictionary(trie_t *dictionary, char* alphabet){
+  while (*alphabet != '\0'){
+    char key[] = {*alphabet++, '\0'};
+    insert(dictionary,key );
+  }
+}
+
+char** initilize_decode_dictionary( char* alphabet){
+  char **dictionary = malloc(strlen(alphabet)*sizeof(char*)*2);
+  int index = 0;
+  while (*alphabet != '\0') {
+  	dictionary[index] = calloc(2,1);
+  	dictionary[index++][0] = *alphabet++;
+    }
+  return dictionary;
+}
+
 
 char* readFile(char *filename)
 {

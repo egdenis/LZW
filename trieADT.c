@@ -74,15 +74,17 @@ void insert(trie_t *pTrie, char key[])
  	
     pTrie->count++;
     pCrawl = pTrie->root;
- 
+
     for( level = 0; level < length; level++ )
     {
+
         index = CHAR_TO_INDEX(key[level]);
+
         if( !pCrawl->children[index] )
         {
             pCrawl->children[index] = getNode();
         }
- 
+
         pCrawl = pCrawl->children[index];
     }
     debug_print("dictionary count: %d\n", pTrie->count);
@@ -114,4 +116,5 @@ int search(trie_t *pTrie, char key[])
  
     return (0 != pCrawl && pCrawl->code) ? pCrawl->code : 0;
 }
+
  
